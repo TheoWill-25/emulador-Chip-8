@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build CHIP-8",
+            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-g3",
+                "-std=c++20",
+                "-I",
+                "${workspaceFolder}/SDL3/include",
+                "${workspaceFolder}/source/main.cpp",
+                "${workspaceFolder}/source/Chip8.cpp",
+                "${workspaceFolder}/source/graphics/Graphics.cpp",
+                "-L",
+                "${workspaceFolder}/SDL3/lib",
+                "-lSDL3",
+                "-lSDL3_ttf",
+                "-o",
+                "${workspaceFolder}/source/output/main.exe"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Build + Run CHIP-8",
+            "command": "${workspaceFolder}/source/output/main.exe",
+            "dependsOn": "Build CHIP-8",
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
